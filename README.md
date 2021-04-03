@@ -5,4 +5,4 @@ ActivityLauncher armed at replacing startActivityForResult/onActivityResult APIs
 *  supported Activity.
 
 ## To-dos
-*. support Fragment.
+*  support Fragment.
