@@ -2,6 +2,7 @@ package me.bytebeats.launcher
 
 import android.content.Intent
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.ReportFragment
 
 /**
  * @Author bytebeats
@@ -34,15 +35,18 @@ class ActivityLauncher private constructor(private val activity: FragmentActivit
         return routerFragment
     }
 
-    fun startActivityForResult(intent: Intent, callback: Callback) {
+    fun startActivityForResult(intent: Intent, callback: RouterFragment.ActivityResultCallback) {
         mRouterFragment.startActivityForResult(intent, callback)
     }
 
-    fun startActivityForResult(clazz: Class<FragmentActivity>, callback: Callback) {
+    fun startActivityForResult(clazz: Class<FragmentActivity>, callback: RouterFragment.ActivityResultCallback) {
         mRouterFragment.startActivityForResult(Intent(activity, clazz), callback)
     }
 
-    interface Callback {
-        fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?)
+    fun requestPermissions(
+        permissions: Array<out String>, callback: RouterFragment.RequestPermissionCallback?
+    ) {
+        mRouterFragment.requestPermissions(permissions, callback)
     }
+
 }

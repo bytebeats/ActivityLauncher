@@ -9,6 +9,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import me.bytebeats.launcher.ActivityLauncher
+import me.bytebeats.launcher.RouterFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,8 +39,8 @@ class MainActivity : AppCompatActivity() {
                 ActivityLauncher.with(this)
                     .startActivityForResult(
                         Intent(this, SecondActivity::class.java),
-                        object : ActivityLauncher.Callback {
-                            override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+                        object : RouterFragment.ActivityResultCallback {
+                            override fun onActivityResult(resultCode: Int, data: Intent?) {
                                 Toast.makeText(
                                     this@MainActivity,
                                     data?.getIntExtra("result", -1)?.toString() ?: "no",
